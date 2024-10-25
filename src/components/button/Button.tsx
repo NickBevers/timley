@@ -4,8 +4,8 @@ export type ButtonVariants = "primary" | "secondary";
 export type ButtonSizes = "sm" | "md" | "lg";
 
 const buttonVariants = {
-  primary: "bg-teal-600 text-white font-semibold text-lg rounded-sm",
-  secondary: "bg-gray-200 text-black",
+  primary: "bg-teal-600 text-white font-semibold text-lg",
+  secondary: "bg-white text-teal-600 font-semibold text-base",
 };
 
 const buttonSizes = {
@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
 }) => {
   return (
-    <button className={`${buttonSizes[size]} ${buttonVariants[variant]}`} onClick={(e) => onClick?.(e)} type={type} disabled={disabled}>
+    <button className={`rounded-sm ${buttonSizes[size]} ${buttonVariants[variant]}`} onClick={(e) => onClick?.(e)} type={type} disabled={disabled}>
       {label}
     </button>
   );

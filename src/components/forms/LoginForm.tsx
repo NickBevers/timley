@@ -1,9 +1,10 @@
 'use client';
 import React from "react";
 import * as Yup from 'yup';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import Button from "../button/Button";
-import { FormGroup } from "./FormComponents";
+import { FormGroup, FormField } from "./FormComponents";
+import { useRouter } from 'next/navigation';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().required("We don't know who you are without this.").min(2, "We don't think this is your email"),
@@ -11,6 +12,8 @@ const LoginSchema = Yup.object().shape({
 });
 
 const LoginForm: React.FC = () => {
+  const router = useRouter();
+
   const handleSubmit = (values: Yup.InferType<typeof LoginSchema>) => {
     console.log("Login form submitted", values);
   }
@@ -29,14 +32,18 @@ const LoginForm: React.FC = () => {
 
           <FormGroup>
             <label htmlFor="email">Email</label>
-            <Field name="email" placeholder="hello@timley.com" className="py-2 px-4 outline-none border-[1px] w-full"/>
+            <FormField name="email" placeholder="hello@timley.com"/>
           </FormGroup>
 
           <FormGroup>
             <label htmlFor="password">Password</label>
-            <Field name="password" placeholder="Password" type="password" className="py-2 px-4 outline-none border-[1px] w-full" />
+            <FormField name="password" placeholder="Password" type="password" />
           </FormGroup>
-          <Button type="submit" label="Log in"/>
+
+          <div className="flex flex-col gap-0">
+            <Button variant="primary" type="submit" label="Log in"/>
+            <Button variant="secondary" label="First time here?" onClick={() => router.push('/register')}/>
+          </div>
         </Form>
       </Formik>
     </div>
