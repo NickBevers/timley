@@ -2,9 +2,11 @@
 import React from "react";
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
+import Button from "../button/Button";
+import { FormGroup } from "./FormComponents";
 
 const LoginSchema = Yup.object().shape({
-  username: Yup.string().required("We don't know who you are without this.").min(2, "We don't think this is your email"),
+  email: Yup.string().required("We don't know who you are without this.").min(2, "We don't think this is your email"),
   password: Yup.string().required('You forgot your password.'),
 });
 
@@ -14,16 +16,27 @@ const LoginForm: React.FC = () => {
   }
 
   return (
-    <div className="flex gap-0">
+    <div className="h-full flex grow items-center justify-center">
       <Formik
-        initialValues={{ username: '', password: '' }}
+        initialValues={{ email: '', password: '' }}
         validationSchema={LoginSchema}
-        onSubmit={(values) => handleSubmit(values)}
+        onSubmit={(values) => {
+          handleSubmit(values as Yup.InferType<typeof LoginSchema>);
+        }}
       >
-        <Form>
-          <Field name="username" placeholder="Username" />
-          <Field name="password" placeholder="Password" />
-          <button type="submit">Submit</button>
+        <Form className="flex flex-col gap-4 w-3/5 h-fit mx-auto justify-center">
+          <h1>Login</h1>
+
+          <FormGroup>
+            <label htmlFor="email">Email</label>
+            <Field name="email" placeholder="hello@timley.com" className="py-2 px-4 outline-none border-[1px] w-full"/>
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="password">Password</label>
+            <Field name="password" placeholder="Password" type="password" className="py-2 px-4 outline-none border-[1px] w-full" />
+          </FormGroup>
+          <Button type="submit" label="Log in"/>
         </Form>
       </Formik>
     </div>
