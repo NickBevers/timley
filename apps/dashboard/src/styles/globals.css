@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+div {
+  @apply w-full h-full;
+}
+
+h1 {
+  @apply text-4xl font-bold mb-8 text-[clamp(2.25rem,2.623vw+1rem,5.25rem)] h-fit;
+}
+
+h2 {
+  @apply text-3xl font-bold mb-6 text-[clamp(1.875rem,1.623vw+1.176rem,3.75rem)] h-fit;
+}
+
+h3 {
+  @apply text-2xl font-bold mb-4 text-[clamp(1.5rem,1.623vw+0.676rem,3rem)] h-fit;
+}
+
+p {
+  @apply text-lg mb-4 text-[clamp(1.063rem,0.492vw+0.955rem,1.625rem)] h-fit;
+}
+
+label, input {
+  @apply text-[clamp(1.063rem,0.492vw+0.955rem,1.125rem)] h-fit;
+}
+
+button {
+  @apply text-[clamp(1.063rem,0.492vw+0.955rem,1.25rem)] h-fit;
+}

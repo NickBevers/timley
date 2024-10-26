@@ -1,3 +1,14 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "root": true,
+  "extends": ["eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["apps/dashboard/**/*"],
+      "extends": ["next/core-web-vitals"]
+    },
+    {
+      "files": ["apps/api/**/*"],
+      "extends": ["plugin:@typescript-eslint/recommended"]
+    }
+  ]
 }

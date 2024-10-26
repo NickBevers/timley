@@ -3,28 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "workspaces": [
+    "apps/dashboard",
+    "apps/api"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "formik": "^2.4.6",
-    "next": "14.2.16",
-    "react": "^18",
-    "react-dom": "^18"
+    "start": "concurrently \"yarn workspace dashboard start\" \"yarn workspace api start\"",
+    "build": "yarn workspace dashboard build && yarn workspace api build",
+    "dev": "concurrently \"yarn workspace dashboard dev\" \"yarn workspace api start:dev\"",
+    "dev:frontend": "yarn workspace dashboard dev",
+    "dev:backend": "yarn workspace api start:dev",
+    "lint": "yarn workspace dashboard lint && yarn workspace api lint",
+    "test": "yarn workspace dashboard test && yarn workspace api test"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "dayjs": "^1.11.13",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.16",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5",
-    "yup": "^1.4.0"
+    "concurrently": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
   }
 }
