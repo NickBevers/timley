@@ -15,12 +15,14 @@ export const FormField: React.FC<ComponentProps<typeof Field>> = ({...props}) =>
 
 export const FormLabel: React.FC<React.HTMLProps<HTMLLabelElement>> = ({ children, ...props }) => {
   return (
-    <label className="text-sm font-medium" {...props}>
+    <label className="font-medium pl-1" {...props}>
       {children}
     </label>
   );
 }
 
-export const FormError : React.FC<ComponentProps<typeof ErrorMessage>> = ({...props}) => {
-  return <ErrorMessage {...props} className="text-red-400 text-sm" />
+export const FormError : React.FC<ComponentProps<typeof ErrorMessage>> = ({ ...props }) => {
+  return <ErrorMessage {...props} >{
+    (msg) => <div className="text-danger font-semibold pl-1">{msg}</div>
+  }</ErrorMessage>
 }

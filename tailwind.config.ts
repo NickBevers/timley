@@ -8,10 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      screens: {
+        xs: "375px",
+        '3xl': '1920px',
+        '4xl': '2400px',
+        '5xl': '3200px',
       },
+      colors: {
+        danger: '#9D174D',
+        main: '#115e59',
+        'main-hover': '#167972',
+      }
     },
   },
   plugins: [],

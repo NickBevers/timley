@@ -4,13 +4,13 @@ export type ButtonVariants = "primary" | "secondary";
 export type ButtonSizes = "sm" | "md" | "lg";
 
 const buttonVariants = {
-  primary: "bg-teal-600 text-white font-semibold text-lg",
-  secondary: "bg-white text-teal-600 font-semibold text-base",
+  primary: "bg-main text-white font-semibold hover:bg-main-hover transition-colors",
+  secondary: "bg-white text-teal-800 font-semibold",
 };
 
 const buttonSizes = {
   sm: "py-1 px-2",
-  md: "py-2 px-4",
+  md: "py-2 px-4 lg:py-2 lg:px-6 3xl:py-3 3xl:px-8",
   lg: "py-3 px-6",
 };
 
